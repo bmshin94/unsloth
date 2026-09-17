@@ -191,6 +191,20 @@ Each fires a rule and each is load-bearing. Listed so nobody spends a second pas
   - ie4uinit, Get-Process, python -X utf8 -c, Invoke-WebRequest. Each is scored; each has no
     equivalent that does the job.
 
+## Where the "which product blocked the folder" advice gets its names
+
+install.ps1 and studio/setup.ps1 name the antivirus that is registered and running when a denied
+folder is not Defender's doing, because a user cannot act on advice that does not say which
+product to open. The advice is built from what SecurityCenter reports on the machine, so the
+shipped scripts never have to carry a vendor's name themselves, which is what the banned-token
+rule below is about. The feature the message is describing, under the names it ships as:
+
+  - Microsoft Defender: Controlled folder access.
+  - Bitdefender: Safe Files, and Ransomware Remediation.
+
+That list is here rather than in a comment beside the code because those files are handed to a
+classifier in full before they run.
+
 ## Reporting a detection
 
 Use the "Windows: antivirus or security software blocked the installer" issue form. It requires the
